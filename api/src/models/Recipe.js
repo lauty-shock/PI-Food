@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4, //Genera automaticamente un ID del tipo UUID
       },
       title: {
         type: DataTypes.STRING,
@@ -29,8 +29,8 @@ module.exports = (sequelize) => {
       healthScore: {
         type: DataTypes.FLOAT,
       },
-      analyzedInstructions: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      instructions: {
+        type: DataTypes.STRING, //Tipo array de strings
       },
     },
     {

@@ -18,13 +18,15 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
-const { conn, Diet, Recipe } = require("./src/db.js");
+const { conn, Diet } = require("./src/db.js");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
-    //Pre-cargo los tipos de dietas en la base de datos
+
+//////////////////////////////////////////////////////////////////////////
+    // Creo un array con los tipos de dietas
     const dietas = [
       "gluten free",
       "ketogenic",
@@ -38,6 +40,8 @@ conn.sync({ force: true }).then(() => {
       "low fodmap",
       "whole 30",
     ];
+
+    // Precargo cada una de las dietas del array a la base de datos (el id se genera automaticamente)
     dietas.forEach(async (element) => await Diet.create({ tipo: element }));
 
     console.log("Tipos de dieta pre-cargadas");
