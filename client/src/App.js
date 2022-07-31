@@ -1,11 +1,12 @@
 import { Route } from "react-router-dom";
 import "./App.css";
 
+///////Importo los componentes a mostrar/////////////
 import First from "./components/First/First";
 import Home from "./components/Home/Home";
-import Recipes from "./components/Recipes/Recipes";
 import Detail from "./components/Detail/Detail";
 import Create from "./components/Create/Create";
+/////////////////////////////////////////////////////
 
 function App() {
   return (

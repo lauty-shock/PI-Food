@@ -13,13 +13,26 @@ export default function Recipe({ id, title, image, diets, healthScore }) {
   }
 
   return (
-    <div className="hijo">
-      RECETA: {title} <br />
-      <Link onClick={detail} to='/detail'>
-        <img src={image} alt="" /> <br />
-      </Link>
-      Dietas: {diets} <br />
-      healthScore: {healthScore} <br />
-    </div>
+    <>
+      <div>
+        <Link className="recipe-link" onClick={detail} to="/detail">
+          <img
+            className="recipe-img"
+            src={image}
+            height="140vh"
+            alt="Image recipe"
+          />
+          <h3 className="recipe-title">{title}</h3>
+        </Link>
+      </div>
+      <div className="recipe-low">
+        <div className="recipe-diets">
+          Diets:<br />{diets} <br />
+        </div>
+        <div className="recipe-score">
+          healthScore:<br />{healthScore} <br />
+        </div>
+      </div>
+    </>
   );
 }

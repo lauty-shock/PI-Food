@@ -9,10 +9,11 @@ import "./Nav.css";
 function Nav() {
   return (
     <nav>
-      <img src={Logo} alt="Logo de food" />
+      <h1 className="nav-h1">Food-PI-Shock</h1>
+      {/* <img className="nav-img" src={Logo} alt="Logo de food" /> */}
       <SearchBar />
       <Link to="/create">
-        <button>Create Recipe</button>
+        <button className="nav-btn">Create Recipe</button>
       </Link>
     </nav>
   );

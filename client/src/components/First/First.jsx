@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function First() {
+import "./First.css"
+
+export default function First() {
   return (
     <>
-        <h1>Henry Food</h1>
-      <Link to="/home"> <button>Home</button> </Link>
+      <h1>Henry Food</h1>
+      <Link to="/home">
+      <input className="first-button" type="button" value="Home" />
+      </Link>
     </>
   );
 }
-
-export default First;

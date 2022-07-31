@@ -2,8 +2,7 @@ var recipesConst = [
   {
     id: 836472,
     title: "sopa con chocolate",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 98,
@@ -13,8 +12,7 @@ var recipesConst = [
   {
     id: 836473,
     title: "Guiso",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/715594-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 54,
@@ -24,8 +22,7 @@ var recipesConst = [
   {
     id: 836474,
     title: "Milanesa",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 100,
@@ -35,8 +32,7 @@ var recipesConst = [
   {
     id: 836475,
     title: "hamburguesa",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/644387-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 8,
@@ -46,8 +42,7 @@ var recipesConst = [
   {
     id: 836476,
     title: "Emiliano",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/716268-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 10,
@@ -57,8 +52,7 @@ var recipesConst = [
   {
     id: 836477,
     title: "Fabian",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/716381-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 1,
@@ -68,8 +62,7 @@ var recipesConst = [
   {
     id: 836478,
     title: "Té de marihuana",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/782601-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 69,
@@ -79,8 +72,7 @@ var recipesConst = [
   {
     id: 836479,
     title: "Browni canabico",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/794349-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 42,
@@ -90,8 +82,7 @@ var recipesConst = [
   {
     id: 8364710,
     title: "Chupetin",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/715446-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 19,
@@ -101,8 +92,7 @@ var recipesConst = [
   {
     id: 8364711,
     title: "Lomito",
-    image:
-      "https://www.clara.es/medio/2021/12/16/que-comer-hoy_1962056a_1280x1167.jpg",
+    image: "https://spoonacular.com/recipeImages/715415-312x231.jpg",
     dishTypes: "comida",
     summary: "resumen piola",
     healthScore: 87,
@@ -172,8 +162,12 @@ router.get("/", async (req, res) => {
     // Si el array no esta vacío devuelvo los resultados encontrados
     else
       return res
-        .status(404)
-        .send(`No se encontraron recetas que contengan "${name}"`);
+        .json([
+          {
+            title: "No name",
+            summary: `No recipes were found containing "${name}"`,
+          },
+        ]);
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -195,13 +189,6 @@ router.get("/:id", async (req, res, next) => {
         },
       },
     });
-    // console.log(recipe.diets);
-    // recipe.diets = recipe.diets.map((d) => {
-    //   console.log(d.tipo);
-    //   return d.tipo;
-    // });
-    // // recipe.diets = ["hola"];
-    // console.log(recipe.diets);
     if (recipe) return res.json(recipe);
     return res.status(404).send({ errorDB: "Receta inexcistente" });
   } else {

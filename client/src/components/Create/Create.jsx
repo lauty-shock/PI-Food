@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import { useNavigate }  from 'react-router-dom'
 import { createRecipe } from "../../redux/actions";
 
 import "./Create.css";
 
 export default function Create() {
   const [input, setInput] = useState({
-    // title: "AASopa con choolate",
     title: "",
     image: "",
     dishTypes: "",
-    // summary: "Una sopa de veduras",
     summary: "",
     healthScore: 1,
     instructions: "",
@@ -20,7 +17,6 @@ export default function Create() {
   });
   const diets = useSelector((state) => state.diets);
   const dispatch = useDispatch();
-  // const history = useNavigation()
 
   function selectDiets() {
     const options = [];
@@ -76,64 +72,74 @@ export default function Create() {
   }
 
   return (
-    <div>
-      <h1>Hello Create</h1>
-      <form onSubmit={validation}>
-        <label>Title: </label>
-        <input
-          type="text"
-          name="title"
-          value={input.title}
-          onChange={(e) => handleInput(e)}
-        />{" "}
-        <br />
-        <label>Image: </label>
-        <input
-          type="text"
-          name="image"
-          value={input.image}
-          onChange={(e) => handleInput(e)}
-        />{" "}
-        <br />
-        <label>Summary: </label>
-        <input
-          type="text"
-          name="summary"
-          value={input.summary}
-          onChange={(e) => handleInput(e)}
-        />{" "}
-        <br />
-        <label>Dish types</label>
-        <input
-          type="text"
-          name="dishTypes"
-          value={input.dishTypes}
-          onChange={(e) => handleInput(e)}
-        />{" "}
-        <br />
-        <label>Health Score: </label>
-        <input
-          type="number"
-          name="healthScore"
-          value={input.healthScore}
-          onChange={(e) => handleInput(e)}
-        />{" "}
-        <br />
-        <label>Instructions: </label>
-        <textarea
-          name="instructions"
-          value={input.instructions}
-          onChange={(e) => handleInput(e)}
-          cols="30"
-          rows="5"
-        ></textarea>{" "}
-        <br />
-        <select onChange={addDiets}>
-          <option>Add diet type</option>
-          {selectDiets()}
-        </select>{" "}
-        <br />
-        <input type="submit" value="Create" />
+    <div className="create">
+      <form className="create-form" onSubmit={validation}>
+        <div className="create-div1">
+          <h1>Create recipe</h1>
+          <label>Image: </label>
+          <input
+            type="text"
+            name="image"
+            value={input.image}
+            onChange={(e) => handleInput(e)}
+          />
+        </div>
+        <div className="create-div2">
+          <label>Title: </label>
+          <input
+            type="text"
+            name="title"
+            value={input.title}
+            onChange={(e) => handleInput(e)}
+          />
+        </div>
+        <div className="create-div3">
+          <label>Dish types: </label>
+          <input
+            type="text"
+            name="dishTypes"
+            value={input.dishTypes}
+            onChange={(e) => handleInput(e)}
+          />
+        </div>
+        <div className="create-div4">
+          <select onChange={addDiets}>
+            <option>Add diet type</option>
+            {selectDiets()}
+          </select>
+        </div>
+        <div className="create-div5">
+          <label>Health Score: </label>
+          <input
+            type="number"
+            name="healthScore"
+            value={input.healthScore}
+            onChange={(e) => handleInput(e)}
+          />
+        </div>
+        <div className="create-div6">
+          <label>Summary: </label>
+          <textarea
+            name="summary"
+            value={input.summary}
+            onChange={(e) => handleInput(e)}
+            cols="30"
+            rows="5"
+          />
+        </div>
+        <div className="create-div7">
+          <label>Instructions: </label>
+          <textarea
+            name="instructions"
+            value={input.instructions}
+            onChange={(e) => handleInput(e)}
+            cols="30"
+            rows="5"
+          ></textarea>
+        </div>
+        <div className="create-div8">
+          <input type="submit" value="Create" />
+        </div>
       </form>
     </div>
   );

@@ -8,16 +8,16 @@ import "./Home.css";
 
 export default function Home() {
   return (
-    <>
+    <div className="home">
       <div className="home-div1">
         <Nav />
       </div>
       <div className="home-div2">
-        <Filters />
-      </div>
-      <div className="home-div3">
         <Recipes />
       </div>
-    </>
+      <div className="home-div3">
+        <Filters />
+      </div>
+    </div>
   );
 }

@@ -43,22 +43,22 @@ export default function Filters() {
   }
 
   return (
-    <div>
-      <select defaultValue="all" onChange={filldiets}>
-        <option value="all">Select diet</option>
+    <div className="Filter-div">
+      <select className="filter-select" defaultValue="all" onChange={filldiets}>
+        <option className="option" value="all">
+          Select diet
+        </option>
         {selectDiets()}
       </select>
-      <select defaultValue="all" onChange={fillOrder}>
-        <option value="all">
-          Select order
-        </option>
-        <option value="upward">Upward</option>
-        <option value="descendant">Descendant</option>
+      <select className="filter-select" defaultValue="all" onChange={fillOrder}>
+        <option value="all">Select order</option>
+        <option value="upward">A - Z</option>
+        <option value="descendant">Z - A</option>
       </select>
-      <select defaultValue="all" onChange={fillOrderScore}>
+      <select className="filter-select" defaultValue="all" onChange={fillOrderScore}>
         <option value="all">Select order score</option>
-        <option value="upward">Upward</option>
-        <option value="descendant">Descendant</option>
+        <option value="upward">1 - 100</option>
+        <option value="descendant">100 - 1</option>
       </select>
     </div>
   );

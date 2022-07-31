@@ -1,0 +1,28 @@
+.recipes-div {
+  /* background-color: #242423; */
+  background-color: #242423ab;
+  border: solid 1px #333533;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1%;
+  margin: 0 0 0 0;
+  flex-wrap: wrap;
+  width: 98%;
+  height: 93%;
+}
+
+.cards {
+  width: 20%;
+  height: 26.3vh;
+  margin: 0.5% 6.5% 0.5% 6.5%;
+
+  background-color: #333533;
+  border: solid 1px 242423ab;
+  border-radius: 5%;
+}
+
+.paginado {
+  width: 100%;
+}

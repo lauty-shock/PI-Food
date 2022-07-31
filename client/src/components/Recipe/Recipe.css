@@ -1,5 +1,40 @@
-.hijo{
-    width: 30%;
-    margin: 0;
-    background-color: rgba(238, 130, 238, 0.534);
+.recipe-link {
+  text-decoration: none;
+}
+
+.recipe-img {
+  width: 100%;
+  border-bottom: solid 1px black;
+  border-radius: 5% 5% 0 0;
+}
+
+.recipe-title {
+  font-size: 1rem;
+  margin: 0 0 2% 0;
+  color: #ff9c2b;
+}
+
+.recipe-low {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  color: #ff9c2b;
+}
+
+.recipe-diets {
+  justify-content: center;
+  border-top: 1px solid #242423ab;
+  width: 50%;
+  height: 5.9vh;
+  /* border-radius: 0 0 0 15%; */
+}
+
+.recipe-score {
+  justify-content: center;
+  border-top: 1px solid #242423ab;
+  border-left: 1px solid #242423ab;
+  width: 49%;
+  height: 5.9vh;
+  /* border-radius: 0 0 15% 0; */
 }
