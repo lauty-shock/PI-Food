@@ -14,14 +14,28 @@ describe("Recipe model", () => {
     }
   });
 
-  it("debería crear la receta", async () => {
+  it("debería crear la receta con la propiedad title", async () => {
+    const recipe = await Recipe.create({
+      title: "Milanesa a la napolitana",
+      summary: "Tan rikos",
+    });
+    expect(recipe.toJSON()).toHaveProperty("title", "Milanesa a la napolitana");
+  });
+  
+  it("debería crear la receta con la propiedad summary", async () => {
+    const recipe = await Recipe.create({
+      title: "Milanesa a la napolitana",
+      summary: "Tan rikos",
+    });
+    expect(recipe.toJSON()).toHaveProperty("summary", "Tan rikos");
+  });
+
+  it("debería crear la receta y tener un id definido", async () => {
     const recipe = await Recipe.create({
       title: "Milanesa a la napolitana",
       summary: "Tan rikos",
     });
     expect(recipe.toJSON().id).toBeDefined(); //Espera un "id definido"
-    expect(recipe.toJSON()).toHaveProperty("title", "Milanesa a la napolitana");
-    expect(recipe.toJSON()).toHaveProperty("summary", "Tan rikos");
   });
 
   afterAll(async () => {
