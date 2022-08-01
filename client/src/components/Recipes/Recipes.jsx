@@ -19,7 +19,6 @@ export default function Recipes() {
 
   const showRecipes = useMemo(() => {
     setLimit({ min: 0, max: 8 });
-    // console.log(recipes.recipe);
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
   }, [recipes.listener]); //Esta atento a si se actualiza el estado global de "recipes"
 
@@ -36,30 +35,68 @@ export default function Recipes() {
     setLimit({ min, max });
   }
 
+  function pagBack(e) {
+    e.preventDefault();
+    let min = limit.min - 9;
+    let max = limit.max - 9;
+    if (min < 0) {
+      min = 0;
+      max = 8;
+    }
+    setLimit({ min, max });
+  }
+
+  function pagNext(e) {
+    e.preventDefault();
+
+    let last = Math.ceil(recipes.recipe.length / 9) * 9 - 1;
+
+    let min = limit.min + 9;
+    let max = limit.max + 9;
+
+    if (limit.max >= last && limit.min >= last - 9) {
+      min = limit.min;
+      max = limit.max;
+    }
+
+    setLimit({ min, max });
+  }
+
   function paginado() {
     const TotalPag = recipes.recipe.length / 9; //Divido el total de recetas en 9 (para la cantidad de paginados)
     const button = [];
+    button.push(
+      <button className="paginado-btn" key="back" onClick={pagBack}>
+        Back
+      </button>
+    );
     for (let i = 0; i < TotalPag; i++) {
       //Creo un "button" por cada paginado y lo pusheo al array "button"
       button.push(
-        <button key={i} onClick={pag}>
+        <button className="paginado-btn" key={i} onClick={pag}>
           {i + 1}
         </button>
       );
     }
+    button.push(
+      <button className="paginado-btn" key="next" onClick={pagNext}>
+        Next
+      </button>
+    );
     return button; //Va a retornar todos los buttons creados
   }
   return (
     <>
       <div className="recipes-div">
         {recipes &&
-          showRecipes.map((r, index) => {
+          showRecipes?.map((r, index) => {
+            // console.log(r);
             if (r.title === "No name") {
               // Pregunto por el obj en caso de error
-              return <h1>{r.summary}</h1>;
+              return <h1 key={r.id}>{r.summary}</h1>;
             }
             if (r.title === "No diet") {
-              return <h1>{r.summary}</h1>;
+              return <h1 key={r.id}>{r.summary}</h1>;
             } else if (index <= limit.max && index >= limit.min) {
               return (
                 <div key={r.id} className="cards">

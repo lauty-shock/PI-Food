@@ -26,3 +26,18 @@
 .paginado {
   width: 100%;
 }
+
+.paginado-btn {
+  background-color: rgb(160, 159, 159);
+
+  border: 1px solid rgb(122, 122, 122);
+  border-radius: 50%;
+
+  font-size: 100%;
+
+  margin: 0.5rem 0.3rem 0% 0.3rem;
+}
+
+.paginado :hover {
+  background-color: white;
+}

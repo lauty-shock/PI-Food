@@ -48,11 +48,12 @@ export default function reducer(state = initialState, action) {
         diets: action.payload, //Cargo el stado global con los tipos de dietas
       };
     case SEARCH_RECIPES:
-      
       action.payload.map((r) => {
-        r.diets = r.diets.map((d) => {
-          return d.tipo;
-        });
+        if (r.id.toString().includes("-")) {
+          r.diets = r.diets.map((d) => {
+            return d.tipo;
+          });
+        }
       });
 
       return {

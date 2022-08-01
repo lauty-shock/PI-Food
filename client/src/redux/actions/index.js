@@ -89,7 +89,7 @@ export function filterDiets(diet) {
       return {
         type: FILTER_DIETS, // Le digo el tipo de acción con el que será llamada
         payload: [
-          { title: "No diet", summary: `We do not have ${diet} recipes.` },
+          { id: "No diet", title: "No diet", summary: `We do not have ${diet} recipes.` },
         ], // El payload es el contenido que devuelve la acción
       };
     }
