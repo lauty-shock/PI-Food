@@ -55,7 +55,11 @@ export default function Filters() {
         <option value="upward">A - Z</option>
         <option value="descendant">Z - A</option>
       </select>
-      <select className="filter-select" defaultValue="all" onChange={fillOrderScore}>
+      <select
+        className="filter-select"
+        defaultValue="all"
+        onChange={fillOrderScore}
+      >
         <option value="all">Select order score</option>
         <option value="upward">1 - 100</option>
         <option value="descendant">100 - 1</option>
