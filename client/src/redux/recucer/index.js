@@ -27,7 +27,7 @@ export default function reducer(state = initialState, action) {
     case GET_ALL_RECIPES:
       //Cambio el array de dietas de las recetas de la db que viene//
       //como un array de obj por un array con los tipos de dietas ///
-      action.payload.map((r) => {
+      action.payload = action.payload.map((r) => {
         if (r.id.toString().includes("-")) {
           const newDiets = [];
           r.diets.map((d) => {
@@ -35,6 +35,7 @@ export default function reducer(state = initialState, action) {
           });
           r.diets = newDiets;
         }
+        return r;
       });
       return {
         ...state,
@@ -47,6 +48,13 @@ export default function reducer(state = initialState, action) {
         diets: action.payload, //Cargo el stado global con los tipos de dietas
       };
     case SEARCH_RECIPES:
+      
+      action.payload.map((r) => {
+        r.diets = r.diets.map((d) => {
+          return d.tipo;
+        });
+      });
+
       return {
         ...state,
         recipes: { recipe: action.payload, listener: !state.recipes.listener },

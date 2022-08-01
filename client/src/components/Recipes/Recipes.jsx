@@ -15,10 +15,11 @@ export default function Recipes() {
   useEffect(() => {
     dispatch(getAllRecipes());
     dispatch(getDiets());
-  }, []);
+  }, [dispatch]);
 
   const showRecipes = useMemo(() => {
     setLimit({ min: 0, max: 8 });
+    // console.log(recipes.recipe);
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
   }, [recipes.listener]); //Esta atento a si se actualiza el estado global de "recipes"
 

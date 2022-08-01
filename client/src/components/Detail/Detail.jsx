@@ -14,11 +14,11 @@ export default function Detail() {
         </Link>
         <h1>{details.title}</h1>
         <img className="detail-img" src={details.image} alt="Food image" />
-        <h3>Dish types: {details.dishTypes}</h3>
-        <h3>Diets types: {details.diets}</h3>
-        <h3>Summary: {details.summary}</h3>
-        <h3>Health Score: {details.healthScore}</h3>
-        <h3>Instructions: {details.instructions}</h3>
+        <h3 className="detail-h3">Dish types: {details.dishTypes}</h3>
+        <h3 className="detail-h3">Diets types: {details.diets}</h3>
+        {details.summary && <p className="detail-p"><h3 className="detail-h3">Summary: </h3>{details.summary.replace(/<\/?[^>]+(>|$)/g, ' ')}</p>}
+        <h3 className="detail-h3">Health Score: {details.healthScore}</h3>
+        {details.instructions && <p className="detail-p"><h3 className="detail-h3">Instructions: </h3>{details.instructions.replace(/<\/?[^>]+(>|$)/g, ' ')}</p>}
       </div>
     </div>
   );

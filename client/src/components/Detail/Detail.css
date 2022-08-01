@@ -11,10 +11,14 @@
   align-items: center;
 
   background: -webkit-linear-gradient(left top, red, red);
-  background: linear-gradient(to bottom right, rgba(255, 255, 0, 0.829), rgba(255, 0, 0, 0.829));
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 0, 0.829),
+    rgba(255, 0, 0, 0.829)
+  );
 
   border-radius: 8px;
-  border: 2px solid  blue;
+  border: 2px solid blue;
 
   width: 80%;
   height: 79vh;
@@ -25,21 +29,37 @@
   height: 10vh;
 }
 
-.detail-btn{
-    position: absolute;
-    left: 14%;
+.detail-btn {
+  position: absolute;
+  left: 14%;
 
-    background-color: rgba(245, 63, 63, 0.900);
-    color: rgba(255, 255, 255, 0.900);
+  background-color: rgba(245, 63, 63, 0.9);
+  color: rgba(255, 255, 255, 0.9);
 
-    border: none;
+  border: none;
 
-    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.detail-h6{
-    font-size: 1rem;
-    margin: 1rem 0.2rem 1rem 1.5rem;
+.detail-h6 {
+  font-size: 1rem;
+  margin: 1rem 0.2rem 1rem 1.5rem;
+}
+
+.detail-h3 {
+  color: white;
+}
+
+.detail-p {
+  color: white;
 }
