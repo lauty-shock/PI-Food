@@ -78,7 +78,7 @@ export default function Create() {
           <h1>Create recipe</h1>
           <label>Image: </label>
           <input
-            type="text"
+            type="url"
             name="image"
             value={input.image}
             onChange={(e) => handleInput(e)}
