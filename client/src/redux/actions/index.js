@@ -17,17 +17,16 @@ var recipesx = []; //Creo un array vacío que será llenado con todas las receta
 
 export function getAllRecipes() {
   return function (dispatch) {
-    axios.get("/recipes")
-         .then((json) => {
+    axios
+      .get("/recipes")
+      .then((json) => {
+        recipesx = json;
 
-          recipesx = json;
-
-          return dispatch({
-            type: GET_ALL_RECIPES,
-            payload: json.data,
-          });
-
-        })
+        return dispatch({
+          type: GET_ALL_RECIPES,
+          payload: json.data,
+        });
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -113,11 +112,11 @@ export function filterOrderScore(order) {
   };
 }
 
-export function filterOrderScoreIntermedios() {
+export function filterOrderScoreIntermedios(value) {
   // Solo devuelvo el string que dice el tipo de orden
 
   const intermedios = recipesx.data.filter(
-    (r) => r.healthScore > 49 && r.healthScore < 76
+    (r) => r.healthScore >= value - 25 && r.healthScore <= value
   );
   // const intermedios = recipesx.data.filter((r) => {
   //   if (r.healthScore > 49 && r.healthScore < 75) {

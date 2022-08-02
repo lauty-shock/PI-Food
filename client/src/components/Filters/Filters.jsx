@@ -50,8 +50,8 @@ export default function Filters() {
     orderName.current.value = "all";
   }
 
-  function intermedios() {
-    dispatch(filterOrderScoreIntermedios());
+  function intermedios(e) {
+    dispatch(filterOrderScoreIntermedios(e.target.value));
   }
 
   return (
@@ -85,7 +85,18 @@ export default function Filters() {
         <option value="descendant">100 - 1</option>
       </select>
 
-      <button onClick={intermedios}>50-75</button>
+      <button className="filter-btn" value="25" onClick={intermedios}>
+        0-25
+      </button>
+      <button className="filter-btn" value="50" onClick={intermedios}>
+        25-50
+      </button>
+      <button className="filter-btn" value="75" onClick={intermedios}>
+        50-75
+      </button>
+      <button className="filter-btn" value="100" onClick={intermedios}>
+        75-100
+      </button>
     </div>
   );
 }

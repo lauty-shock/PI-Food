@@ -12,3 +12,25 @@
   background-color: #333533;
   color: #ff9c2b;
 }
+
+.filter-btn {
+  width: 15rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 10%;
+  background-color: #333533;
+  color: #ff9c2b;
+  cursor: pointer;
+}
+
+.filter-btn:active {
+  margin-top: calc(10% + 1px);
+}
+
+.filter-btn:focus{
+  color: #333533;
+  background: -webkit-linear-gradient(left top, red, red);
+  background: linear-gradient(to bottom right, yellow, red);
+
+  border: solid 2px #333533;
+}
