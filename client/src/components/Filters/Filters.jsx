@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterDiets,
@@ -13,6 +14,10 @@ import "./Filters.css";
 export default function Filters() {
   const diets = useSelector((state) => state.diets);
   const dispatch = useDispatch();
+
+  const orderName = useRef();
+  const orderScore = useRef();
+
   function filldiets(e) {
     dispatch(filterDiets(e.target.value));
   }
@@ -36,10 +41,12 @@ export default function Filters() {
 
   function fillOrder(e) {
     dispatch(filterOrder(e.target.value));
+    orderScore.current.value = "all";
   }
 
   function fillOrderScore(e) {
     dispatch(filterOrderScore(e.target.value));
+    orderName.current.value = "all";
   }
 
   return (
@@ -50,15 +57,23 @@ export default function Filters() {
         </option>
         {selectDiets()}
       </select>
-      <select className="filter-select" defaultValue="all" onChange={fillOrder}>
+
+      <select
+        className="filter-select"
+        defaultValue="all"
+        onChange={fillOrder}
+        ref={orderName}
+      >
         <option value="all">Select order</option>
         <option value="upward">A - Z</option>
         <option value="descendant">Z - A</option>
       </select>
+
       <select
         className="filter-select"
         defaultValue="all"
         onChange={fillOrderScore}
+        ref={orderScore}
       >
         <option value="all">Select order score</option>
         <option value="upward">1 - 100</option>
