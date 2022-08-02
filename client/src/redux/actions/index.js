@@ -8,6 +8,7 @@ export const SEARCH_RECIPES = "SEARCH_RECIPES";
 export const FILTER_DIETS = "FILTER_DIETS";
 export const FILTER_ORDER = "FILTER_ORDER";
 export const FILTER_ORDER_SCORE = "FILTER_ORDER_SCORE";
+export const FILTER_ORDER_SCORE_INTERMEDIOS = "FILTER_ORDER_SCORE_INTERMEDIOS";
 export const DETAIL_RECIPE = "DETAIL_RECIPE";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 /////////////////////////////////////////////////////////////////////
@@ -15,30 +16,21 @@ export const CREATE_RECIPE = "CREATE_RECIPE";
 var recipesx = []; //Creo un array vacío que será llenado con todas las recetas (API/DB)
 
 export function getAllRecipes() {
-  return async function (dispatch) {
-    recipesx = await axios.get("/recipes"); //Hago un llamado a la ruta que creé y lo guardo en el array que creé
+  return function (dispatch) {
+    axios.get("/recipes")
+         .then((json) => {
 
-    // recipesx.data = await recipesx.data.map((r) => {
-    //   if (r.id.toString().includes("-")) {
-    //     console.log(
-    //       "__________________________________________________________________________________________________________________________"
-    //     );
-    //     r.diets = r.diets.map((d) => {
-    //       console.log(d.tipo);
-    //       return "d.tipo";
-    //     });
-    //     console.log(
-    //       "__________________________________________________________________________________________________________________________"
-    //     );
-    //   }
-    //   console.log(r);
-    //   return r;
-    // });
+          recipesx = json;
 
-    return dispatch({
-      type: GET_ALL_RECIPES, // Le digo el tipo de acción con el que será llamada
-      payload: recipesx.data, // El payload es el contenido que devuelve la acción
-    });
+          return dispatch({
+            type: GET_ALL_RECIPES,
+            payload: json.data,
+          });
+
+        })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 }
 
@@ -89,7 +81,11 @@ export function filterDiets(diet) {
       return {
         type: FILTER_DIETS, // Le digo el tipo de acción con el que será llamada
         payload: [
-          { id: "No diet", title: "No diet", summary: `We do not have ${diet} recipes.` },
+          {
+            id: "No diet",
+            title: "No diet",
+            summary: `We do not have ${diet} recipes.`,
+          },
         ], // El payload es el contenido que devuelve la acción
       };
     }
@@ -114,6 +110,25 @@ export function filterOrderScore(order) {
   return {
     type: FILTER_ORDER_SCORE, // Le digo el tipo de acción con el que será llamada
     payload: order, // El payload es el contenido que devuelve la acción
+  };
+}
+
+export function filterOrderScoreIntermedios() {
+  // Solo devuelvo el string que dice el tipo de orden
+
+  const intermedios = recipesx.data.filter(
+    (r) => r.healthScore > 49 && r.healthScore < 76
+  );
+  // const intermedios = recipesx.data.filter((r) => {
+  //   if (r.healthScore > 49 && r.healthScore < 75) {
+  //     console.log(r);
+  //     return r;
+  //   }
+  // });
+
+  return {
+    type: FILTER_ORDER_SCORE_INTERMEDIOS, // Le digo el tipo de acción con el que será llamada
+    payload: intermedios, // El payload es el contenido que devuelve la acción
   };
 }
 

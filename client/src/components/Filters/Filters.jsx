@@ -5,6 +5,7 @@ import {
   filterDiets,
   filterOrder,
   filterOrderScore,
+  filterOrderScoreIntermedios,
   getAllRecipes,
   getDiets,
 } from "../../redux/actions";
@@ -49,6 +50,10 @@ export default function Filters() {
     orderName.current.value = "all";
   }
 
+  function intermedios() {
+    dispatch(filterOrderScoreIntermedios());
+  }
+
   return (
     <div className="Filter-div">
       <select className="filter-select" defaultValue="all" onChange={filldiets}>
@@ -79,6 +84,8 @@ export default function Filters() {
         <option value="upward">1 - 100</option>
         <option value="descendant">100 - 1</option>
       </select>
+
+      <button onClick={intermedios}>50-75</button>
     </div>
   );
 }

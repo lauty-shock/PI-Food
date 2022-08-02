@@ -27,6 +27,8 @@
   border-top: 1px solid #242423ab;
   width: 50%;
   height: 5.9vh;
+  flex: 0 0 auto;
+  /* flex-wrap: wrap; */
   /* border-radius: 0 0 0 15%; */
 }
 

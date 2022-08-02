@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
       },
       instructions: {
-        type: DataTypes.STRING, //Tipo array de strings
+        type: DataTypes.TEXT, //Tipo array de strings // Editado a ultimo momento 
       },
     },
     {

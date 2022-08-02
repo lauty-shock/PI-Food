@@ -8,6 +8,10 @@ import "./Recipe.css";
 export default function Recipe({ id, title, image, diets, healthScore }) {
   const dispatch = useDispatch();
 
+  diets = diets.map(d => {
+    return `${d} `
+  })
+
   function detail() {
     dispatch(detailRecipe(id));
   }

@@ -27,6 +27,16 @@
   color: white;
 }
 
+.p-danger {
+  color: red;
+  font-size: 2rem;
+}
+
+.input-danger {
+  border: 2px solid red;
+}
+
+
 .create-div1 { grid-area: 1 / 1 / 2 / 5; }
 .create-div2 { grid-area: 2 / 1 / 3 / 3; }
 .create-div3 { grid-area: 2 / 3 / 3 / 5; }
