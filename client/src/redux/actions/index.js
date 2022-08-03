@@ -33,6 +33,20 @@ export function getAllRecipes() {
   };
 }
 
+// export function getAllRecipes() {
+//   return async function (dispatch) {
+//     try {
+//       recipesx = await axios.get("/recipes");
+//       return dispatch({
+//         type: GET_ALL_RECIPES,
+//         payload: recipesx.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+
 export function getDiets() {
   return async function (dispatch) {
     const diets = await axios.get("/diets"); //Hago un llamado a la ruta que creé y lo guardo en la constante "diets"
@@ -115,10 +129,10 @@ export function filterOrderScore(order) {
 export function filterOrderScoreIntermedios(value) {
   // Solo devuelvo el string que dice el tipo de orden
 
-  if(value === "all"){
+  if (value === "all") {
     return {
       type: FILTER_ORDER_SCORE_INTERMEDIOS,
-      payload: recipesx.data, 
+      payload: recipesx.data,
     };
   }
   const intermedios = recipesx.data.filter(

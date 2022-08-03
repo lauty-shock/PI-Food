@@ -4,11 +4,12 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 2.2rem 0;
+  padding: 0.5rem 0;
 }
 
 .create-h1 {
   margin-top: 0;
+  margin-bottom: 0.5rem;
   font-size: 2.49rem;
   background: -webkit-linear-gradient(left top, yellow, red);
   background: linear-gradient(to bottom right, yellow, red);
@@ -28,7 +29,7 @@
 
 .create-div-top {
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.4rem;
   margin-left: 7rem;
   margin-right: 7rem;
   display: flex;
@@ -83,7 +84,7 @@
 }
 
 .btn-create {
-  margin: 2rem 1rem 0rem 1rem;
+  margin: 1rem 1rem 0rem 1rem;
   font-size: 1.2rem;
   width: 50%;
   padding: 0.4rem;
@@ -113,7 +114,7 @@
 
 .input-danger {
   border: 2px solid red;
-  margin-bottom: 2px !important;
+  margin-bottom: 1px !important;
 }
 
 .btn-back {

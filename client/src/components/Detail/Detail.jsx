@@ -29,23 +29,28 @@ export default function Detail() {
             <h3 className={s.detailTitle}>Diet Types:</h3>
             {details.diets &&
               details.diets.map((e, i) => {
-                return <li key={i}>{e},</li>;
+                return <li key={i}>{e}</li>;
               })}
           </div>
         </div>
 
         <h3 className={s.detailTitleLow}>Summary:</h3>
-        {details.summary && (
-          <p className={s.detailP}>
-            {details.summary.replace(/<\/?[^>]+(>|$)/g, " ")}
-          </p>
-        )}
+        <div className={s.divData}>
+          {details.summary && (
+            <p className={s.detailP}>
+              {details.summary.replace(/<\/?[^>]+(>|$)/g, " ")}
+            </p>
+          )}
+        </div>
+
         <h3 className={s.detailTitleLow}>Instructions:</h3>
-        {details.instructions && (
-          <p className={s.detailP}>
-            {details.instructions.replace(/<\/?[^>]+(>|$)/g, " ")}
-          </p>
-        )}
+        <div className={s.divData}>
+          {details.instructions && (
+            <p className={s.detailP}>
+              {details.instructions.replace(/<\/?[^>]+(>|$)/g, " ")}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

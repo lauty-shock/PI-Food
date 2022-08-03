@@ -86,16 +86,16 @@ export default function Filters() {
       </select>
 
       <button className="filter-btn" value="25" onClick={intermedios}>
-        0-25
+        Health score: 0-25
       </button>
       <button className="filter-btn" value="50" onClick={intermedios}>
-        25-50
+        Health score: 25-50
       </button>
       <button className="filter-btn" value="75" onClick={intermedios}>
-        50-75
+        Health score: 50-75
       </button>
       <button className="filter-btn" value="100" onClick={intermedios}>
-        75-100
+        Health score: 75-100
       </button>
       <button className="filter-btn" value="all" onClick={intermedios}>
         All recipes

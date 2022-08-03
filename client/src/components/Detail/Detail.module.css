@@ -1,10 +1,24 @@
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #554b48;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #463e3c;
+  border-radius: 10px;
+  border: 1px solid #302b2a;
+}
+
 .detail {
   overflow-x: hidden !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 2.2rem 0;
+  padding: calc(2rem - 10px) 0;
 }
 
 .detailDiv {
@@ -64,10 +78,9 @@
 
 .detailP {
   text-align: justify;
-  margin-left: 9rem;
-  margin-right: 9rem;
-  margin-bottom: 2rem;
+  margin: 0px;
   line-height: 1.5rem;
+  height: 10vh;
 }
 
 .detailTitleLow {
@@ -77,6 +90,22 @@
   color: rgb(255, 255, 255);
   margin-top: 0.6rem;
   margin-bottom: 0.5rem;
+}
+
+.divData{
+  width: 80%;
+  height: 12vh;
+
+  border-radius: 8px;
+  border: 1px solid #463e3c;
+
+  padding: 0px 1% 0 1%;
+
+  overflow-y: scroll;
+
+  margin: 0px auto 10px auto;
+
+  background-color: rgba(70, 70, 70, 0.322);
 }
 
 .detailBtn {
