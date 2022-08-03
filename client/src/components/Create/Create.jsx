@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../redux/actions";
 
@@ -11,7 +12,7 @@ export default function Create() {
     image: "",
     dishTypes: "",
     summary: "",
-    healthScore: 1,
+    healthScore: 0,
     instructions: "",
     diets: [],
   });
@@ -64,24 +65,27 @@ export default function Create() {
     return options;
   }
 
-  function showDiets() {
-    const pDiets = input.diets.map((d) => {
-      return <p key={d}>{d}</p>;
-    });
+  // function showDiets() {
+  //   const pDiets = input.diets.map((d) => {
+  //     return <p key={d}>{d}</p>;
+  //   });
 
-    console.log(pDiets);
-    return pDiets;
-  }
+  //   console.log(pDiets);
+  //   return pDiets;
+  // }
 
   function addDiets(e) {
-    if (!input.diets.includes(e.target.value)) {
-      console.log(e.target.value)
-      setInput({
-        ...input,
-        diets: [...input.diets, e.target.value],
-      });
+    if (e.target.value !== "Add diet type") {
+      if (!input.diets.includes(e.target.value)) {
+        console.log(e.target.value);
+        setInput({
+          ...input,
+          diets: [...input.diets, e.target.value],
+        });
+      }
     }
-    showDiets();
+
+    // showDiets();
   }
   ////////////////////////////////////////////////////
   function handleInput(e) {
@@ -114,98 +118,97 @@ export default function Create() {
 
   return (
     <div className="create">
+      <h1 className="create-h1">Create recipe</h1>
+      <Link to="/home">
+        <button className="btn-back">
+          <h6>BACK</h6>
+        </button>
+      </Link>
       <form className="create-form" onSubmit={validation}>
-        <div className="create-div1">
-          <h1>Create recipe</h1>
-          <label>Image: </label>
-          <input
-            className={errors.image && "input-danger"}
-            type="url"
-            name="image"
-            value={input.image}
-            onChange={(e) => handleInput(e)}
-          />
-          {errors.image && <p className="p-danger">{errors.image}</p>}
+        <div className="create-div-top">
+          <div className="create-div-top-left">
+            <input
+              className={errors.image && "input-danger"}
+              type="url"
+              name="image"
+              value={input.image}
+              onChange={(e) => handleInput(e)}
+              placeholder="Enter the URL of the image"
+            />
+            {errors.image && <p className="p-danger">{errors.image}</p>}
+          </div>
+
+          <div className="create-div-top-rigth">
+            <label>Title: </label>
+            <input
+              className={errors.title && "input-danger"}
+              type="text"
+              name="title"
+              value={input.title}
+              onChange={handleInput}
+            />
+            {errors.title && <p className="p-danger">{errors.title}</p>}
+
+            <label>Dish types: </label>
+            <input
+              className={errors.dishTypes && "input-danger"}
+              type="text"
+              name="dishTypes"
+              value={input.dishTypes}
+              onChange={(e) => handleInput(e)}
+            />
+            {errors.dishTypes && <p className="p-danger">{errors.dishTypes}</p>}
+
+            <select onChange={addDiets}>
+              <option>Add diet type</option>
+              {selectDiets()}
+            </select>
+            <ul className="create-ul">
+              {input.diets.map((d) => {
+                return <li key={d}>{d}</li>;
+              })}
+            </ul>
+
+            <label>Health Score: </label>
+            <input
+              className={errors.healthScore && "input-danger"}
+              type="number"
+              name="healthScore"
+              value={input.healthScore}
+              onChange={(e) => handleInput(e)}
+            />
+            {errors.healthScore && (
+              <p className="p-danger">{errors.healthScore}</p>
+            )}
+          </div>
         </div>
 
-        <div className="create-div2">
-          <label>Title: </label>
-          <input
-            className={errors.title && "input-danger"}
-            type="text"
-            name="title"
-            value={input.title}
-            onChange={handleInput}
-          />
-          {errors.title && <p className="p-danger">{errors.title}</p>}
-        </div>
-
-        <div className="create-div3">
-          <label>Dish types: </label>
-          <input
-            className={errors.dishTypes && "input-danger"}
-            type="text"
-            name="dishTypes"
-            value={input.dishTypes}
-            onChange={(e) => handleInput(e)}
-          />
-          {errors.dishTypes && <p className="p-danger">{errors.dishTypes}</p>}
-        </div>
-
-        <div className="create-div4">
-          <select onChange={addDiets}>
-            <option>Add diet type</option>
-            {selectDiets()}
-          </select>
-          {input.diets.map((d) => {
-            return d;
-          })}
-        </div>
-
-        <div className="create-div5">
-          <label>Health Score: </label>
-          <input
-            className={errors.healthScore && "input-danger"}
-            type="number"
-            name="healthScore"
-            value={input.healthScore}
-            onChange={(e) => handleInput(e)}
-          />
-          {errors.healthScore && (
-            <p className="p-danger">{errors.healthScore}</p>
-          )}
-        </div>
-
-        <div className="create-div6">
+        <div className="create-div-low">
           <label>Summary: </label>
           <textarea
             className={errors.summary && "input-danger"}
             name="summary"
             value={input.summary}
             onChange={handleInput}
-            cols="30"
-            rows="5"
+            cols="80"
+            rows="7"
           />
           {errors.summary && <p className="p-danger">{errors.summary}</p>}
-        </div>
 
-        <div className="create-div7">
           <label>Instructions: </label>
           <textarea
             className={errors.instructions && "input-danger"}
             name="instructions"
             value={input.instructions}
             onChange={(e) => handleInput(e)}
-            cols="30"
-            rows="5"
+            cols="80"
+            rows="7"
           />
           {errors.instructions && (
             <p className="p-danger">{errors.instructions}</p>
           )}
-        </div>
 
-        <div className="create-div8">
-          <input type="submit" value="Create" />
+          <input type="submit" value="Create" className="btn-create" />
         </div>
       </form>
     </div>

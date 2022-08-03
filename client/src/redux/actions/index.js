@@ -115,6 +115,12 @@ export function filterOrderScore(order) {
 export function filterOrderScoreIntermedios(value) {
   // Solo devuelvo el string que dice el tipo de orden
 
+  if(value === "all"){
+    return {
+      type: FILTER_ORDER_SCORE_INTERMEDIOS,
+      payload: recipesx.data, 
+    };
+  }
   const intermedios = recipesx.data.filter(
     (r) => r.healthScore >= value - 25 && r.healthScore <= value
   );

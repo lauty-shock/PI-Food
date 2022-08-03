@@ -1,5 +1,8 @@
 h1 {
-  color: antiquewhite;
+  background: -webkit-linear-gradient(left top, red, red);
+  background: linear-gradient(to bottom right, yellow, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .first-button {
@@ -23,5 +26,7 @@ h1 {
 }
 .first-button:active {
   position: relative;
+  -webkit-box-shadow: 0px 0px 30px 10px #ff9c2bce;
+  box-shadow: 0px 0px 30px 10px #ff9c2bce;
   top: 1px;
 }

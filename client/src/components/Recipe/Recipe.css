@@ -17,16 +17,21 @@
 .recipe-low {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: baseline;
   flex-wrap: wrap;
+  height: 3rem;
   color: #ff9c2b;
 }
 
 .recipe-diets {
   justify-content: center;
   border-top: 1px solid #242423ab;
+  border-right: 1px solid #242423ab;
+
+  overflow: auto;
+
   width: 50%;
-  height: 5.9vh;
+  /* height: auto; */
   flex: 0 0 auto;
   /* flex-wrap: wrap; */
   /* border-radius: 0 0 0 15%; */
@@ -35,8 +40,8 @@
 .recipe-score {
   justify-content: center;
   border-top: 1px solid #242423ab;
-  border-left: 1px solid #242423ab;
+  /* border-left: 1px solid #242423ab; */
   width: 49%;
-  height: 5.9vh;
+  height: auto;
   /* border-radius: 0 0 15% 0; */
 }

@@ -23,14 +23,21 @@
   cursor: pointer;
 }
 
-.filter-btn:active {
-  margin-top: calc(10% + 1px);
+.filter-btn:hover {
+  background: -webkit-linear-gradient(left top, yellow, red);
+  background: linear-gradient(to bottom right, rgb(170, 170, 0), rgb(170, 0, 0));
+  -webkit-box-shadow: 0px 0px 20px 10px #6d4517ce;
+  box-shadow: 0px 0px 20px 10px #6d4517ce;
+
+  border: solid 2px #333533;
 }
 
 .filter-btn:focus{
   color: #333533;
-  background: -webkit-linear-gradient(left top, red, red);
+  background: -webkit-linear-gradient(left top, yellow, red);
   background: linear-gradient(to bottom right, yellow, red);
+  -webkit-box-shadow: 0px 0px 30px 10px #ff9c2bce;
+  box-shadow: 0px 0px 30px 10px #ff9c2bce;
 
   border: solid 2px #333533;
 }

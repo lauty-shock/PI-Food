@@ -67,7 +67,7 @@ export default function Recipes() {
     const button = [];
     button.push(
       <button className="paginado-btn" key="back" onClick={pagBack}>
-        Back
+        {"<"}
       </button>
     );
     for (let i = 0; i < TotalPag; i++) {
@@ -80,7 +80,7 @@ export default function Recipes() {
     }
     button.push(
       <button className="paginado-btn" key="next" onClick={pagNext}>
-        Next
+        {">"}
       </button>
     );
     return button; //Va a retornar todos los buttons creados

@@ -97,6 +97,9 @@ export default function Filters() {
       <button className="filter-btn" value="100" onClick={intermedios}>
         75-100
       </button>
+      <button className="filter-btn" value="all" onClick={intermedios}>
+        All recipes
+      </button>
     </div>
   );
 }

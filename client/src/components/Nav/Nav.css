@@ -25,3 +25,8 @@ nav {
   border: none;
   cursor: pointer;
 }
+
+.nav-btn:hover {
+  -webkit-box-shadow: 0px 0px 30px 10px #ff9c2bce;
+  box-shadow: 0px 0px 30px 10px #ff9c2bce;
+}

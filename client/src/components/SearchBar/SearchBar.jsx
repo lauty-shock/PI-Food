@@ -15,7 +15,7 @@ function SearchBar() {
   }
 
   return (
-    <div>
+    <>
       <input
       className="searchBar"
         type="text"
@@ -23,7 +23,7 @@ function SearchBar() {
         value={recipe}
         onChange={(e) => handleInput(e)}
       />
-    </div>
+    </>
   );
 }
 
