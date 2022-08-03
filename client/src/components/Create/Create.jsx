@@ -70,14 +70,12 @@ export default function Create() {
   //     return <p key={d}>{d}</p>;
   //   });
 
-  //   console.log(pDiets);
   //   return pDiets;
   // }
 
   function addDiets(e) {
     if (e.target.value !== "Add diet type") {
       if (!input.diets.includes(e.target.value)) {
-        console.log(e.target.value);
         setInput({
           ...input,
           diets: [...input.diets, e.target.value],
@@ -107,10 +105,7 @@ export default function Create() {
       return alert("Fill in the missing fields");
     if (input.diets.length <= 0) return alert("select a diet at least");
     else {
-      console.log("LLEGA");
-      console.log(input);
       dispatch(createRecipe(input));
-      console.log("PASA");
       window.history.back();
       alert("recipe created successfully");
     }
