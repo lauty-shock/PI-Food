@@ -90,7 +90,6 @@ export default function Recipes() {
       <div className="recipes-div">
         {recipes &&
           showRecipes?.map((r, index) => {
-            // console.log(r);
             if (r.title === "No name") {
               // Pregunto por el obj en caso de error
               return <h1 key={r.id}>{r.summary}</h1>;

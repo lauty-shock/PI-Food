@@ -126,7 +126,6 @@ export function filterOrderScoreIntermedios(value) {
   );
   // const intermedios = recipesx.data.filter((r) => {
   //   if (r.healthScore > 49 && r.healthScore < 75) {
-  //     console.log(r);
   //     return r;
   //   }
   // });
