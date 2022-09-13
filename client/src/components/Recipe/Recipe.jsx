@@ -34,14 +34,7 @@ export default function Recipe({ id, title, image, diets, healthScore }) {
       </div>
       <div className="recipe-low">
         <div className="recipe-diets">
-          Diets:
-          <br />
-          {diets}
-        </div>
-        <div className="recipe-score">
-          healthScore:
-          <br />
-          {healthScore}
+          Diets: {diets}
         </div>
       </div>
     </>

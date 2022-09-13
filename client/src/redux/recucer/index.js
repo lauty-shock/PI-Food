@@ -5,7 +5,6 @@ import {
   FILTER_DIETS,
   FILTER_ORDER,
   FILTER_ORDER_SCORE,
-  FILTER_ORDER_SCORE_INTERMEDIOS,
   GET_ALL_RECIPES,
   GET_DIETS,
   SEARCH_RECIPES,
@@ -121,15 +120,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         recipes: {
           recipe: state.recipes.recipe,
-          listener: !state.recipes.listener,
-        },
-        // Actualizo el estado de "recipes" para que vuelva a hacer el pedido y contenga la nueva receta creada
-      };
-    case FILTER_ORDER_SCORE_INTERMEDIOS:
-      return {
-        ...state,
-        recipes: {
-          recipe: action.payload,
           listener: !state.recipes.listener,
         },
         // Actualizo el estado de "recipes" para que vuelva a hacer el pedido y contenga la nueva receta creada

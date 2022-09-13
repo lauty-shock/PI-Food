@@ -17,7 +17,7 @@
 
 .cards {
   width: calc(22% + 1px);
-  height: calc(14.5rem - 1px);
+  height: calc(32% - 1px);
   margin: 0.5% 5.5% 0.5% 5.5%;
 
   background-color: #3a3230;
