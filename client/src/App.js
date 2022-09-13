@@ -1,13 +1,11 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
-///////Importo los componentes a mostrar/////////////
 import LandingPage from "./components/First/First";
 import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
 import Create from "./components/Create/Create";
 import Fail from "./components/Fail/Fail";
-/////////////////////////////////////////////////////
 
 function App() {
   return (

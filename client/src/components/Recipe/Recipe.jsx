@@ -9,11 +9,11 @@ export default function Recipe({ id, title, image, diets, healthScore }) {
   const dispatch = useDispatch();
 
   diets = diets.map((d, i) => {
-    if(diets.length -1 === i){
-      return `${d}`
+    if (diets.length - 1 === i) {
+      return `${d}`;
     }
-    return `${d}, `
-  })
+    return `${d}, `;
+  });
 
   function detail() {
     dispatch(detailRecipe(id));
@@ -27,17 +27,21 @@ export default function Recipe({ id, title, image, diets, healthScore }) {
             className="recipe-img"
             src={image}
             height="140vh"
-            alt="Image recipe"
+            alt="ImageRecipe"
           />
           <h3 className="recipe-title">{title}</h3>
         </Link>
       </div>
       <div className="recipe-low">
         <div className="recipe-diets">
-          Diets:<br />{diets}
+          Diets:
+          <br />
+          {diets}
         </div>
         <div className="recipe-score">
-          healthScore:<br />{healthScore}
+          healthScore:
+          <br />
+          {healthScore}
         </div>
       </div>
     </>

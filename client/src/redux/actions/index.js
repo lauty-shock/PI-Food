@@ -33,20 +33,6 @@ export function getAllRecipes() {
   };
 }
 
-// export function getAllRecipes() {
-//   return async function (dispatch) {
-//     try {
-//       recipesx = await axios.get("/recipes");
-//       return dispatch({
-//         type: GET_ALL_RECIPES,
-//         payload: recipesx.data,
-//       });
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }
-
 export function getDiets() {
   return async function (dispatch) {
     const diets = await axios.get("/diets"); //Hago un llamado a la ruta que creé y lo guardo en la constante "diets"
@@ -138,11 +124,6 @@ export function filterOrderScoreIntermedios(value) {
   const intermedios = recipesx.data.filter(
     (r) => r.healthScore >= value - 25 && r.healthScore <= value
   );
-  // const intermedios = recipesx.data.filter((r) => {
-  //   if (r.healthScore > 49 && r.healthScore < 75) {
-  //     return r;
-  //   }
-  // });
 
   return {
     type: FILTER_ORDER_SCORE_INTERMEDIOS, // Le digo el tipo de acción con el que será llamada
@@ -152,6 +133,12 @@ export function filterOrderScoreIntermedios(value) {
 
 export function detailRecipe(id) {
   return async function (dispatch) {
+    if (id === "null") {
+      return dispatch({
+        type: DETAIL_RECIPE, // Le digo el tipo de acción con el que será llamada
+        payload: {}, // El payload es el contenido que devuelve la acción
+      });
+    }
     const recipe = await axios.get(`/recipes/${id}`); // Pedido para traer los detalles de una receta
 
     if (id.toString().includes("-")) {

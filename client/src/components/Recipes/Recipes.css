@@ -1,16 +1,18 @@
 .recipes-div {
-  /* background-color: #242423; */
-  background-color: #242423ab;
-  border: solid 1px #333533;
-  border-radius: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 1%;
-  margin: 0 0 0 0;
   flex-wrap: wrap;
+
+  background-color: #242423ab;
+  border: solid 1px #333533;
+  border-radius: 20px;
+
   width: 98%;
   height: 85vh;
+
+  margin: 0 0 0 0;
+  padding: 1%;
 }
 
 .cards {
@@ -33,6 +35,8 @@
 }
 
 .paginado {
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
@@ -52,8 +56,8 @@
 
 .paginado :hover {
   filter: saturate(100%) brightness(100%);
-  -webkit-box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.450);
-  box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.450);
+  -webkit-box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.45);
   background-color: white;
   border: 1px solid #fff;
 }
