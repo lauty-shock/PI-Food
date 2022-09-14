@@ -1,9 +1,12 @@
 import React from "react";
 
+import css from "./Fail.module.css";
+
 export default function Fail() {
   return (
-    <div>
-      <h1>Error 404 No existe ❤🚀</h1>
+    <div className={css.Fail}>
+      <h1>Error 404</h1>
+      <h1>Nonexistent Url</h1>
     </div>
   );
 }
