@@ -8,7 +8,7 @@ import "./Nav.css";
 function Nav() {
   return (
     <nav>
-      <h1 className="nav-h1">Food-PI-Shock</h1>
+      <h1 className="nav-h1">Recipes</h1>
       <SearchBar />
       <Link to="/create">
         <button className="nav-btn">Create Recipe</button>
