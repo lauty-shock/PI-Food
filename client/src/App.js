@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import "./normalize.css";
 
 import LandingPage from "./components/First/First";
 import Home from "./components/Home/Home";
