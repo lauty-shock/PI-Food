@@ -9,10 +9,8 @@ export default function Detail() {
 
   return (
     <div className={css.detail}>
-      <Link to="/home">
-        <button className={css.detailBtn}>
-          <h6>BACK</h6>
-        </button>
+      <Link className={css.detailBtn} to="/home">
+        <h6>BACK</h6>
       </Link>
 
       <div className={css.detailDiv}>

@@ -22,7 +22,10 @@ export default function First() {
 
       <div className={css.rigth}>
         <div className={css.imagen}>
-          <img src="https://cookit-app.vercel.app/static/media/img5.e7c1868d.jpg" />
+          <img
+            src="https://cookit-app.vercel.app/static/media/img5.e7c1868d.jpg"
+            alt="img"
+          />
           <span className={css.textImg}>Best vegetarian recipes</span>
         </div>
       </div>
