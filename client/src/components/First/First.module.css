@@ -1,0 +1,185 @@
+.leadingPage {
+  display: flex;
+
+  width: 100%;
+  height: 100vh;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 30%;
+  height: 100vh;
+}
+
+.leadingPage h1 {
+  color: var(--blue);
+  font-size: 3rem;
+  margin: 120px 0 0 20%;
+}
+
+.leadingPage section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 15%;
+
+  margin: 0 0 100px 20%;
+}
+
+.leadingPage section h5 {
+  text-align: center;
+  color: var(--blue);
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.leadingPage .firstButton {
+  background-color: var(--blue);
+  border: none;
+  border-radius: 8px;
+
+  font-size: 1.7rem;
+  color: white;
+
+  width: 200px;
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+}
+
+.leadingPage .firstButton:hover {
+  background-color: var(--blue-dark);
+}
+
+.rigth {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 70%;
+  height: 100vh;
+
+  user-select: none;
+}
+
+.rigth .imagen {
+  position: relative;
+  width: 90%;
+  height: 76%;
+}
+
+.rigth .imagen img {
+  object-fit: cover;
+  border-radius: 20px;
+
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.rigth .imagen .textImg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: content-box;
+
+  background-color: var(--blue);
+  font-size: 2.5rem;
+  color: white;
+
+  border-radius: 0 100px 0 20px;
+  border: 5px solid var(--white);
+  border-bottom: none;
+  border-left: none;
+
+  width: 500px;
+  height: 100px;
+
+  padding: 0 15px;
+}
+
+@media (max-width: 1246px) {
+  .leadingPage h1 {
+    margin: 120px 0 0 10%;
+  }
+
+  .leadingPage section {
+    margin: 0 0 100px 10%;
+  }
+}
+
+@media (max-width: 1107px) {
+  .leadingPage h1 {
+    font-size: 2.5rem;
+  }
+
+  .rigth .imagen .textImg {
+    font-size: 2rem;
+    width: 400px;
+  }
+}
+
+@media (max-width: 922px) {
+  .left {
+    width: 40%;
+  }
+
+  .rigth {
+    width: 60%;
+  }
+
+  .rigth .imagen .textImg {
+    font-size: 1.5rem;
+    width: 300px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 691px) {
+  .leadingPage h1 {
+    font-size: 2rem;
+  }
+
+  .rigth .imagen .textImg {
+    padding: 0 15px 0 0;
+  }
+}
+
+@media (max-width: 628px) {
+  .left {
+    width: 100%;
+  }
+
+  .leadingPage h1 {
+    font-size: 3rem;
+    margin: 120px 0 0 0;
+  }
+
+  .leadingPage section {
+    margin: 0 0 100px 0;
+  }
+
+  .rigth {
+    display: none;
+  }
+}
+
+@media (max-width: 298px) {
+  .leadingPage h1 {
+    font-size: 2.5rem;
+  }
+}

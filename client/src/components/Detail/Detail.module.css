@@ -1,12 +1,12 @@
-*::-webkit-scrollbar {
+.divData::-webkit-scrollbar {
   width: 12px;
 }
 
-*::-webkit-scrollbar-track {
+.divData::-webkit-scrollbar-track {
   background: #554b48;
 }
 
-*::-webkit-scrollbar-thumb {
+.divData::-webkit-scrollbar-thumb {
   background-color: #463e3c;
   border-radius: 10px;
   border: 1px solid #302b2a;
@@ -92,7 +92,7 @@
   margin-bottom: 0.5rem;
 }
 
-.divData{
+.divData {
   width: 80%;
   height: 12vh;
 

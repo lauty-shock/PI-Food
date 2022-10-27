@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchRecipes } from "../../redux/actions";
 
-import "./SearchBar.css"
+import css from "./SearchBar.module.css";
 
 function SearchBar() {
   const [recipe, setRecipe] = useState("");
@@ -17,7 +17,7 @@ function SearchBar() {
   return (
     <>
       <input
-      className="searchBar"
+        className={css.searchBar}
         type="text"
         placeholder="Search Recipe..."
         value={recipe}

@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 import SearchBar from "../SearchBar/SearchBar";
 
-import "./Nav.css";
+import css from "./Nav.module.css";
 
 function Nav() {
   return (
-    <nav>
-      <h1 className="nav-h1">Recipes</h1>
+    <nav className={css.navbar}>
+      <h1>Recipe Book</h1>
       <SearchBar />
       <Link to="/create">
-        <button className="nav-btn">Create Recipe</button>
+        <button className={css.navBtn}>Create Recipe</button>
       </Link>
     </nav>
   );

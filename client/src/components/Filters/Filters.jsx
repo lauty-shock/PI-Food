@@ -9,7 +9,7 @@ import {
   getDiets,
 } from "../../redux/actions";
 
-import "./Filters.css";
+import css from "./Filters.module.css";
 
 export default function Filters() {
   const diets = useSelector((state) => state.diets);
@@ -50,8 +50,8 @@ export default function Filters() {
   }
 
   return (
-    <div className="Filter-div">
-      <select className="filter-select" defaultValue="all" onChange={filldiets}>
+    <div className={css.filterDiv}>
+      <select className={css.filterSelect} defaultValue="all" onChange={filldiets}>
         <option className="option" value="all">
           Select diet
         </option>
@@ -59,7 +59,7 @@ export default function Filters() {
       </select>
 
       <select
-        className="filter-select"
+        className={css.filterSelect}
         defaultValue="all"
         onChange={fillOrder}
         ref={orderName}
@@ -70,7 +70,7 @@ export default function Filters() {
       </select>
 
       <select
-        className="filter-select"
+        className={css.filterSelect}
         defaultValue="all"
         onChange={fillOrderScore}
         ref={orderScore}
