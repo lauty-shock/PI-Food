@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailRecipe } from "../../redux/actions";
 
-import "./Recipe.css";
+import css from "./Recipe.module.css";
 
-export default function Recipe({ id, title, image, diets, healthScore }) {
+export default function Recipe({ id, title, image, diets, summary }) {
   const dispatch = useDispatch();
 
   diets = diets.map((d, i) => {
     if (diets.length - 1 === i) {
       return `${d}`;
     }
-    return `${d}, `;
+    return `${d}`;
   });
 
   function detail() {
@@ -20,23 +20,24 @@ export default function Recipe({ id, title, image, diets, healthScore }) {
   }
 
   return (
-    <>
-      <div>
-        <Link className="recipe-link" onClick={detail} to="/detail">
-          <img
-            className="recipe-img"
-            src={image}
-            height="140vh"
-            alt="ImageRecipe"
-          />
-          <h3 className="recipe-title">{title}</h3>
-        </Link>
-      </div>
-      <div className="recipe-low">
-        <div className="recipe-diets">
-          Diets: {diets}
+    <Link className={css.container} onClick={detail} to="/detail">
+      <img className={css.image} src={image} alt="ImageRecipe" />
+
+      <div className={css.data}>
+        <h3 className={css.title}>{title}</h3>
+        <div className={css.diets}>
+          {diets?.map((D, index) => {
+            return (
+              <span className={css.diet} key={index}>
+                {D}
+              </span>
+            );
+          })}
         </div>
+        <span className={css.summary}>
+          {summary.replace(/<\/?[^>]+(>|$)/g, " ")}
+        </span>
       </div>
-    </>
+    </Link>
   );
 }

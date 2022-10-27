@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--back);
 
   width: 100%;
   height: 60px;
@@ -19,7 +19,7 @@
 .navBtn {
   background: var(--blue);
   color: var(--white);
-  border-radius: 5px;
+  border-radius: 2px;
   border: none;
   
   width: 90px;

@@ -5,10 +5,10 @@ import { getAllRecipes, getDiets } from "../../redux/actions";
 
 import Recipe from "../Recipe/Recipe";
 
-import "./Recipes.css";
+import css from "./Recipes.module.css";
 
 export default function Recipes() {
-  const [limit, setLimit] = useState({ min: 0, max: 8 }); //Limite de recetas a mostrar por página
+  const [limit, setLimit] = useState({ min: 0, max: 5 }); //Limite de recetas a mostrar por página
   const recipes = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ export default function Recipes() {
   }, [dispatch]);
 
   const showRecipes = useMemo(() => {
-    setLimit({ min: 0, max: 8 });
+    setLimit({ min: 0, max: 5 });
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
   }, [recipes.listener]); //Esta atento a si se actualiza el estado global de "recipes"
 
@@ -26,22 +26,22 @@ export default function Recipes() {
     //Muestro nueve recetas diferentes en cada página
     e.preventDefault();
     const valuePag = Number(e.target.innerText);
-    let min = (valuePag - 1) * 9;
-    let max = valuePag * 9 - 1; //"-1" porque se comienza en el indice "0"
+    let min = (valuePag - 1) * 6;
+    let max = valuePag * 6 - 1; //"-1" porque se comienza en el indice "0"
     if (valuePag === 1) {
       min = 0;
-      max = 8;
+      max = 5;
     }
     setLimit({ min, max });
   }
 
   function pagBack(e) {
     e.preventDefault();
-    let min = limit.min - 9;
-    let max = limit.max - 9;
+    let min = limit.min - 6;
+    let max = limit.max - 6;
     if (min < 0) {
       min = 0;
-      max = 8;
+      max = 5;
     }
     setLimit({ min, max });
   }
@@ -49,12 +49,12 @@ export default function Recipes() {
   function pagNext(e) {
     e.preventDefault();
 
-    let last = Math.ceil(recipes.recipe.length / 9) * 9 - 1;
+    let last = Math.ceil(recipes.recipe.length / 6) * 6 - 1;
 
-    let min = limit.min + 9;
-    let max = limit.max + 9;
+    let min = limit.min + 6;
+    let max = limit.max + 6;
 
-    if (limit.max >= last && limit.min >= last - 9) {
+    if (limit.max >= last && limit.min >= last - 6) {
       min = limit.min;
       max = limit.max;
     }
@@ -63,23 +63,23 @@ export default function Recipes() {
   }
 
   function paginado() {
-    const TotalPag = recipes.recipe.length / 9; //Divido el total de recetas en 9 (para la cantidad de paginados)
+    const TotalPag = recipes.recipe.length / 6; //Divido el total de recetas en 9 (para la cantidad de paginados)
     const button = [];
     button.push(
-      <button className="paginado-btn" key="back" onClick={pagBack}>
+      <button className={css.paginadoBtn} key="back" onClick={pagBack}>
         {"<"}
       </button>
     );
     for (let i = 0; i < TotalPag; i++) {
       //Creo un "button" por cada paginado y lo pusheo al array "button"
       button.push(
-        <button className="paginado-btn" key={i} onClick={pag}>
+        <button className={css.paginadoBtn} key={i} onClick={pag}>
           {i + 1}
         </button>
       );
     }
     button.push(
-      <button className="paginado-btn" key="next" onClick={pagNext}>
+      <button className={css.paginadoBtn} key="next" onClick={pagNext}>
         {">"}
       </button>
     );
@@ -87,7 +87,7 @@ export default function Recipes() {
   }
   return (
     <>
-      <div className="recipes-div">
+      <div className={css.recipesDiv}>
         {recipes &&
           showRecipes?.map((r, index) => {
             if (r.title === "No name") {
@@ -98,25 +98,23 @@ export default function Recipes() {
               return <h1 key={r.id}>{r.summary}</h1>;
             } else if (index <= limit.max && index >= limit.min) {
               return (
-                <div key={r.id} className="cards">
-                  <Recipe
-                    key={r.id}
-                    id={r.id}
-                    title={r.title}
-                    image={r.image}
-                    diets={r.diets}
-                    dishTypes={r.dishTypes}
-                    summary={r.summary}
-                    healthScore={r.healthScore}
-                    analyzedInstructions={r.analyzedInstructions}
-                  />
-                </div>
+                <Recipe
+                  key={r.id}
+                  id={r.id}
+                  title={r.title}
+                  image={r.image}
+                  diets={r.diets}
+                  dishTypes={r.dishTypes}
+                  summary={r.summary}
+                  healthScore={r.healthScore}
+                  analyzedInstructions={r.analyzedInstructions}
+                />
               );
             }
           })}
       </div>
 
-      <div className="paginado">{paginado()}</div>
+      <div className={css.paginado}>{paginado()}</div>
     </>
   );
 }
