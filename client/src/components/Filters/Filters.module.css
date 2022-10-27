@@ -4,7 +4,6 @@
   align-items: center;
 
   width: 100%;
-  height: 50vh;
 }
 
 .filterSelect {
@@ -16,4 +15,26 @@
 
   padding: 0.5rem;
   margin-top: 1.5%;
+}
+
+@media (max-width: 1100px) {
+  .filterSelect {
+    width: 98%;
+  }
+}
+
+@media (max-width: 880px) {
+  .filterDiv {
+    flex-direction: row;
+    justify-content: center;
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .filterSelect {
+    width: auto;
+
+    padding: 0.5rem;
+  }
 }

@@ -39,9 +39,17 @@
 }
 
 .data .title {
+  text-align: center;
+
   color: var(--black);
   font-size: 1.5rem;
   font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  width: 95%;
   margin-top: 5px;
 
   transition: 0.2s;
@@ -54,8 +62,13 @@
 .diets {
   display: flex;
   justify-content: center;
-  gap: 5px;
+
   width: 100%;
+
+  padding: 0 8px;
+  gap: 5px;
+
+  overflow-x: hidden;
 }
 
 .diet {
@@ -74,9 +87,9 @@
 .summary {
   color: var(--black);
   width: 80%;
-  height: 50px;
   margin-top: 25px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-size: 0.8rem;
 }
