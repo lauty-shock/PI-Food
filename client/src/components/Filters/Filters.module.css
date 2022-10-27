@@ -38,3 +38,13 @@
     padding: 0.5rem;
   }
 }
+
+@media (max-width: 530px) {
+  .filterDiv {
+    gap: 7px;
+  }
+
+  .filterSelect {
+    width: calc(98% / 3);
+  }
+}

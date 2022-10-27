@@ -21,7 +21,7 @@
   color: var(--white);
   border-radius: 2px;
   border: none;
-  
+
   width: 90px;
   height: 45px;
 
@@ -30,4 +30,10 @@
 
 .navBtn:hover {
   background-color: var(--blue-dark);
+}
+
+@media (max-width: 700px) {
+  .navbar h1 {
+    display: none;
+  }
 }
