@@ -11,20 +11,17 @@
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 2.49rem;
-  background: -webkit-linear-gradient(left top, yellow, red);
-  background: linear-gradient(to bottom right, yellow, red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--blue);
 }
 
 .create-form {
-  background-color: rgba(255, 255, 255, 0.350);
+  background-color: var(--back);
   border-radius: 2rem;
-  border: 1px solid white;
+  box-shadow: 0 0 2px black;
   padding-top: 1rem;
   padding-bottom: 0.1rem;
   width: 65%;
-  backdrop-filter: blur(3px) brightness(50%);
+  max-width: 1200px;
 }
 
 .create-div-top {
@@ -93,7 +90,7 @@
   cursor: pointer;
 }
 
-.btn-create:active{
+.btn-create:active {
   margin-top: calc(2rem + 1px);
 }
 
@@ -101,7 +98,7 @@
   padding-inline-start: 2rem;
 }
 
-.create-ul > li{
+.create-ul > li {
   width: 80%;
 }
 
@@ -118,26 +115,23 @@
 
 .btn-back {
   position: absolute;
-  left: 2%;
-  font-size: 2rem;
-  padding: 0 1rem 0 1rem;
-  background: -webkit-linear-gradient(left top, yellow, red);
-  background: linear-gradient(to bottom right, yellow, red);
-  backdrop-filter: blur(3px) brightness(30%);
+  left: 0;
+  top: 60px;
 
-  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  background-color: var(--blue);
+  border-radius: 0 10px 10px 0;
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.8rem;
   border: none;
 
-  clip-path: polygon(
-    40% 0%,
-    40% 20%,
-    100% 20%,
-    100% 80%,
-    40% 80%,
-    40% 100%,
-    0% 50%
-  );
+  height: 75px;
+  padding: 0 1rem 0 1rem;
 
   cursor: pointer;
 }
