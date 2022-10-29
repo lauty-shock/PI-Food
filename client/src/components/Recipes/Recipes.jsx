@@ -20,7 +20,7 @@ export default function Recipes() {
   const showRecipes = useMemo(() => {
     setLimit({ min: 0, max: 5 });
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
-  }, [recipes.listener]); //Esta atento a si se actualiza el estado global de "recipes"
+  }, [recipes.recipe]); //Esta atento a si se actualiza el estado global de "recipes"
 
   function pag(e) {
     //Muestro nueve recetas diferentes en cada página
@@ -111,6 +111,7 @@ export default function Recipes() {
                 />
               );
             }
+            return "";
           })}
       </div>
 

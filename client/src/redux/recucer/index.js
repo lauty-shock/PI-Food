@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
       action.payload = action.payload.map((r) => {
         if (r.id.toString().includes("-")) {
           const newDiets = [];
-          r.diets.map((d) => {
+          r.diets.forEach((d) => {
             newDiets.push(d.tipo);
           });
           r.diets = newDiets;
@@ -54,6 +54,7 @@ export default function reducer(state = initialState, action) {
             return d.tipo;
           });
         }
+        return "";
       });
 
       return {
