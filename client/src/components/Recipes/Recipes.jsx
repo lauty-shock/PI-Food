@@ -92,7 +92,7 @@ export default function Recipes() {
           showRecipes?.map((r, index) => {
             if (r.title === "No name") {
               // Pregunto por el obj en caso de error
-              return <h1 key={index}>{r.summary}</h1>;
+              return <h1 className={css.centrar} key={index}>{r.summary}</h1>;
             }
             if (r.title === "No diet") {
               return <h1 key={index}>{r.summary}</h1>;

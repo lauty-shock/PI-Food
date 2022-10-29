@@ -47,7 +47,7 @@ export default function Detail() {
               </ul>
             </div>
 
-            <div className={css.data}>
+            <div className={css.containerHealthScore}>
               <h3 className={css.typeTitle}>Health Score</h3>
               <span className={css.healthScore}>{details.healthScore}</span>
             </div>

@@ -43,6 +43,10 @@
   gap: 10px;
 }
 
+.centrar{
+  text-align: center;
+}
+
 .paginadoBtn {
   background-color: var(--back);
 
