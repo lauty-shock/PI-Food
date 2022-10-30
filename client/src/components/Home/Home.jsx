@@ -20,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     if (recipes.recipe.length > 0) {
-      setSpiner(false);
+      setSpiner(true);
     } else {
       setSpiner(true);
     }
