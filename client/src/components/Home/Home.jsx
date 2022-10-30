@@ -1,30 +1,50 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Nav from "../Nav/Nav";
 import Recipes from "../Recipes/Recipes";
 import Filters from "../Filters/Filters";
-import "./Home.css";
+import css from "./Home.module.css";
 import { detailRecipe } from "../../redux/actions";
+import { useState } from "react";
+import Spinner from "../Spinner/Spinner";
 
 export default function Home() {
+  const recipes = useSelector((state) => state.recipes);
+  const [spiner, setSpiner] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(detailRecipe("null"));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (recipes.recipe.length > 0) {
+      setSpiner(false);
+    } else {
+      setSpiner(true);
+    }
+  }, [recipes.recipe]);
+
   return (
-    <div className="home">
-      <div className="home-div1">
-        <Nav />
-      </div>
-      <div className="home-div2">
-        <Recipes />
-      </div>
-      <div className="home-div3">
-        <Filters />
-      </div>
-    </div>
+    <>
+      {spiner ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className={css.home}>
+            <div className={css.homeDiv1}>
+              <Nav />
+            </div>
+            <div className={css.homeDiv2}>
+              <Recipes />
+            </div>
+            <div className={css.homeDiv3}>
+              <Filters />
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 }
