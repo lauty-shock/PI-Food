@@ -17,6 +17,20 @@
   border: none;
 }
 
+.containerRecipe {
+  display: flex;
+
+  background-color: var(--white-light);
+  box-shadow: 0px 0px 5px gray;
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  width: 90%;
+  height: calc(32% - 1px);
+
+}
+
 .recipesDiv {
   display: flex;
   flex-direction: row;

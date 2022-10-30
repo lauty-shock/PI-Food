@@ -83,7 +83,6 @@ export default function reducer(state = initialState, action) {
               //Ordeno el estado de recipes en orden desendente con el metodo .sort()
               //Si el nombre es menor (Zz-Aa) retun 1 y si no return -1, los va acomodando
             });
-
       return {
         ...state,
         recipes: { recipe: order, listener: !state.recipes.listener },

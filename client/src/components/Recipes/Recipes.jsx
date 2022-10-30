@@ -17,12 +17,10 @@ export default function Recipes() {
     dispatch(getDiets());
   }, [dispatch]);
 
-
-
   const showRecipes = useMemo(() => {
     setLimit({ min: 0, max: 5 });
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
-  }, [recipes.recipe]); //Esta atento a si se actualiza el estado global de "recipes"
+  }, [...recipes.recipe]); //Esta atento a si se actualiza el estado global de "recipes"
 
   function pag(e) {
     //Muestro nueve recetas diferentes en cada página
@@ -104,17 +102,19 @@ export default function Recipes() {
               return <h1 key={index}>{r.summary}</h1>;
             } else if (index <= limit.max && index >= limit.min) {
               return (
-                <Recipe
-                  key={r.id}
-                  id={r.id}
-                  title={r.title}
-                  image={r.image}
-                  diets={r.diets}
-                  dishTypes={r.dishTypes}
-                  summary={r.summary}
-                  healthScore={r.healthScore}
-                  analyzedInstructions={r.analyzedInstructions}
-                />
+                <div key={r.id} className={css.containerRecipe}>
+                  <Recipe
+                    key={r.id}
+                    id={r.id}
+                    title={r.title}
+                    image={r.image}
+                    diets={r.diets}
+                    dishTypes={r.dishTypes}
+                    summary={r.summary}
+                    healthScore={r.healthScore}
+                    analyzedInstructions={r.analyzedInstructions}
+                  />
+                </div>
               );
             }
             return "";
