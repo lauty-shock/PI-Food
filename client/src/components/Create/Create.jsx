@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../redux/actions";
 
-import "./Create.css";
+import "./Create.module.css";
 
 export default function Create() {
   const [input, setInput] = useState({
@@ -64,14 +64,6 @@ export default function Create() {
     return options;
   }
 
-  // function showDiets() {
-  //   const pDiets = input.diets.map((d) => {
-  //     return <p key={d}>{d}</p>;
-  //   });
-
-  //   return pDiets;
-  // }
-
   function addDiets(e) {
     if (e.target.value !== "Add diet type") {
       if (!input.diets.includes(e.target.value)) {
@@ -81,10 +73,8 @@ export default function Create() {
         });
       }
     }
-
-    // showDiets();
   }
-  ////////////////////////////////////////////////////
+
   function handleInput(e) {
     setInput({
       ...input,
