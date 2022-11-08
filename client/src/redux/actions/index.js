@@ -141,7 +141,7 @@ export function detailRecipe(id) {
 
 export function createRecipe(input) {
   if (input.dishTypes.length <= 0) {
-    input.dishTypes = ["Not specified"];
+    input.dishTypes = ["Unspecified"];
   }
   if (input.image.length <= 0) {
     input.image = "http://localhost:3000/static/media/no-image.5da5e856.png";

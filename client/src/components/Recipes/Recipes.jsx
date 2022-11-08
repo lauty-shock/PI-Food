@@ -16,12 +16,10 @@ export default function Recipes() {
     dispatch(getAllRecipes());
     dispatch(getDiets());
   }, [dispatch]);
-
   const showRecipes = useMemo(() => {
     setLimit({ min: 0, max: 5 });
     return [...recipes.recipe]; //Cada que se actualice me devuelve una copia de las recetas actualizadas
   }, [...recipes.recipe]); //Esta atento a si se actualiza el estado global de "recipes"
-
   function pag(e) {
     //Muestro nueve recetas diferentes en cada página
     e.preventDefault();
@@ -34,7 +32,6 @@ export default function Recipes() {
     }
     setLimit({ min, max });
   }
-
   function pagBack(e) {
     e.preventDefault();
     let min = limit.min - 6;
@@ -45,7 +42,6 @@ export default function Recipes() {
     }
     setLimit({ min, max });
   }
-
   function pagNext(e) {
     e.preventDefault();
 
@@ -61,7 +57,6 @@ export default function Recipes() {
 
     setLimit({ min, max });
   }
-
   function paginado() {
     const TotalPag = recipes.recipe.length / 6; //Divido el total de recetas en 9 (para la cantidad de paginados)
     const button = [];

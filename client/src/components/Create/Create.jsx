@@ -215,6 +215,7 @@ export default function Create() {
             <img
               className={css.img}
               src={input.image !== "" ? input.image : `${NoImage}`}
+              alt={input.image !== "" ? input.image : `${NoImage}`}
             />
           </div>
           <input
