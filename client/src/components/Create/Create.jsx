@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../redux/actions";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Swal from "sweetalert2";
 import NoImage from "../../img/no-image.png";
 import css from "./Create.module.css";
 
@@ -121,10 +122,14 @@ export default function Create() {
       return alert("Fill in the missing fields");
     else {
       dispatch(createRecipe(input));
-      alert("recipe created successfully");
+      Swal.fire({
+        title: "Recipe created!",
+        icon: "success",
+      });
       window.history.back();
     }
   }
+
   return (
     <div className={css.container}>
       <h1 className={css.title}>CREATE RECIPE</h1>
@@ -134,6 +139,7 @@ export default function Create() {
       <Link className={css.back} to="/home">
         BACK
       </Link>
+
       <div className={css.containerType}>
         <h2 className={css.titleType}>DISH TYPE</h2>
         <form className={css.containerInputType} onSubmit={addDish}>
