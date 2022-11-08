@@ -6,6 +6,9 @@ import css from "./Detail.module.css";
 
 export default function Detail() {
   const details = useSelector((state) => state.detail);
+  if (details.diets <= 0) {
+    details.diets = ["Not specified"];
+  }
 
   return (
     <div className={css.container}>

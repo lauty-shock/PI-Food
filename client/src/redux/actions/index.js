@@ -140,6 +140,12 @@ export function detailRecipe(id) {
 }
 
 export function createRecipe(input) {
+  if (input.dishTypes.length <= 0) {
+    input.dishTypes = ["Not specified"];
+  }
+  if (input.image.length <= 0) {
+    input.image = "http://localhost:3000/static/media/no-image.5da5e856.png";
+  }
   return async function (dispatch) {
     try {
       const response = await axios.post(`/recipes`, input); //Pedido a la ruta de creacion le paso el obj input para que lo cree

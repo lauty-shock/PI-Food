@@ -1,4 +1,4 @@
-const {recipesConst} = require("./arrayRecipes");
+const { recipesConst } = require("./arrayRecipes");
 const { Router } = require("express");
 // const axios = require("axios");
 const { Recipe, Diet } = require("../db");
@@ -121,13 +121,16 @@ router.post("/", async (req, res) => {
       instructions,
     });
 
-    diets.map(async (dieta) => {
-      // Mapeo el array de dietas
-      let dietDB = await Diet.findAll({
-        where: { tipo: dieta.toLowerCase() }, // Busco la dieta que coincida con el tipo que mandaron
+    if (diets.length > 0) {
+      diets.map(async (dieta) => {
+        // Mapeo el array de dietas
+        let dietDB = await Diet.findAll({
+          where: { tipo: dieta.toLowerCase() }, // Busco la dieta que coincida con el tipo que mandaron
+        });
+        console.log(dietDB);
+        recipeCreate.addDiet(dietDB); // Hago la relacion entre la receta y la dieta
       });
-      recipeCreate.addDiet(dietDB); // Hago la relacion entre la receta y la dieta
-    });
+    }
 
     if (!title)
       return res
