@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../redux/actions";
-
-import "./Create.module.css";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import NoImage from "../../img/no-image.png";
+import css from "./Create.module.css";
 
 export default function Create() {
   const [input, setInput] = useState({
     title: "",
     image: "",
-    dishTypes: "",
+    dishTypes: [],
     summary: "",
     healthScore: 0,
     instructions: "",
     diets: [],
   });
   const [errors, setErrors] = useState({});
+  const [dish, setDish] = useState("");
   const diets = useSelector((state) => state.diets);
   const dispatch = useDispatch();
 
@@ -24,34 +26,25 @@ export default function Create() {
     if (!input.title) {
       errors.title = "Title is required";
     } else if (!/^[a-zA-Z\s]+$/.test(input) && input.title.length < 4) {
-      //Debo solucionar las expresiones regulares
       errors.title = "Title is invalid";
     }
 
     if (!input.summary) {
       errors.summary = "Summary is required";
     } else if (!/^[a-zA-Z\s]+$/.test(input) && input.summary.length < 4) {
-      //Debo solucionar las expresiones regulares
       errors.summary = "Summary is invalid";
     }
 
-    if (!input.image) {
-      errors.image = "Missing image url";
-    }
-    if (!input.dishTypes) {
-      errors.dishTypes = "Complete dish type";
-    }
     if (!input.instructions) {
       errors.instructions = "Complete instructions";
     }
 
     if (input.healthScore < 1 || input.healthScore > 100) {
-      errors.healthScore = "Value must be between 1 - 100";
+      errors.healthScore = "Value must be between 1-100";
     }
 
     return errors;
   }
-
   function selectDiets() {
     const options = [];
     diets.map((d) =>
@@ -63,7 +56,19 @@ export default function Create() {
     );
     return options;
   }
-
+  function changeDish(e) {
+    setDish(e.target.value);
+  }
+  function addDish(e) {
+    e.preventDefault();
+    if (!input.dishTypes.includes(dish)) {
+      setInput({
+        ...input,
+        dishTypes: [...input.dishTypes, dish],
+      });
+    }
+    setDish("");
+  }
   function addDiets(e) {
     if (e.target.value !== "Add diet type") {
       if (!input.diets.includes(e.target.value)) {
@@ -74,7 +79,30 @@ export default function Create() {
       }
     }
   }
-
+  function deleteDish(e) {
+    let aux = [];
+    input.dishTypes.forEach((i) => {
+      if (i !== e.target.id) {
+        aux.push(i);
+      }
+    });
+    setInput({
+      ...input,
+      dishTypes: aux,
+    });
+  }
+  function deleteDiet(e) {
+    let aux = [];
+    input.diets.forEach((i) => {
+      if (i !== e.target.id) {
+        aux.push(i);
+      }
+    });
+    setInput({
+      ...input,
+      diets: aux,
+    });
+  }
   function handleInput(e) {
     setInput({
       ...input,
@@ -87,114 +115,156 @@ export default function Create() {
       })
     );
   }
-
   function validation(e) {
     e.preventDefault();
     if (Object.values(errors).length > 0 || input.title.length < 4)
       return alert("Fill in the missing fields");
-    if (input.diets.length <= 0) return alert("select a diet at least");
     else {
       dispatch(createRecipe(input));
-      window.history.back();
       alert("recipe created successfully");
+      window.history.back();
     }
   }
-
   return (
-    <div className="create">
-      <h1 className="create-h1">Create recipe</h1>
-      <Link to="/home">
-        <button className="btn-back">
-          <h6>BACK</h6>
-        </button>
+    <div className={css.container}>
+      <h1 className={css.title}>CREATE RECIPE</h1>
+      <button className={css.btnCreate} onClick={validation}>
+        CREATE
+      </button>
+      <Link className={css.back} to="/home">
+        BACK
       </Link>
-      <form className="create-form" onSubmit={validation}>
-        <div className="create-div-top">
-          <div className="create-div-top-left">
-            <input
-              className={errors.image && "input-danger"}
-              type="url"
-              name="image"
-              value={input.image}
-              onChange={(e) => handleInput(e)}
-              placeholder="Enter the URL of the image"
-            />
-            {errors.image && <p className="p-danger">{errors.image}</p>}
-          </div>
+      <div className={css.containerType}>
+        <h2 className={css.titleType}>DISH TYPE</h2>
+        <form className={css.containerInputType} onSubmit={addDish}>
+          <input
+            value={dish}
+            onChange={(e) => changeDish(e)}
+            className={css.inputType}
+            type="text"
+            placeholder="Enter dish type"
+          />
+          <button type="submit" className={css.enterInput}>
+            <AiOutlineArrowRight />
+          </button>
+        </form>
+        {input.dishTypes.map((d) => {
+          return (
+            <li className={css.type} key={d}>
+              {d}
+              <span
+                onClick={(e) => deleteDish(e)}
+                id={d}
+                className={css.deleteType}
+              >
+                x
+              </span>
+            </li>
+          );
+        })}
+      </div>
 
-          <div className="create-div-top-rigth">
-            <label>Title: </label>
-            <input
-              className={errors.title && "input-danger"}
-              type="text"
-              name="title"
-              value={input.title}
-              onChange={handleInput}
-            />
-            {errors.title && <p className="p-danger">{errors.title}</p>}
+      <form className={css.form}>
+        <div className={css.containerTitle}>
+          <input
+            className={
+              errors.title ? `${css.inputTitleDanger}` : `${css.inputTitle}`
+            }
+            type="text"
+            name="title"
+            value={input.title}
+            onChange={handleInput}
+            placeholder="Enter title"
+          />
+          {errors.title && <span className={css.pDanger}>{errors.title}</span>}
 
-            <label>Dish types: </label>
-            <input
-              className={errors.dishTypes && "input-danger"}
-              type="text"
-              name="dishTypes"
-              value={input.dishTypes}
-              onChange={(e) => handleInput(e)}
-            />
-            {errors.dishTypes && <p className="p-danger">{errors.dishTypes}</p>}
+          <input
+            className={
+              errors.healthScore
+                ? `${css.inputTitleDanger}`
+                : `${css.inputTitle}`
+            }
+            type="number"
+            name="healthScore"
+            min={1}
+            max={100}
+            value={input.healthScore}
+            onChange={(e) => handleInput(e)}
+          />
+          {errors.healthScore && (
+            <span className={css.pDanger}>{errors.healthScore}</span>
+          )}
 
-            <select onChange={addDiets}>
-              <option>Add diet type</option>
-              {selectDiets()}
-            </select>
-            <ul className="create-ul">
-              {input.diets.map((d) => {
-                return <li key={d}>{d}</li>;
-              })}
-            </ul>
-
-            <label>Health Score: </label>
-            <input
-              className={errors.healthScore && "input-danger"}
-              type="number"
-              name="healthScore"
-              value={input.healthScore}
-              onChange={(e) => handleInput(e)}
-            />
-            {errors.healthScore && (
-              <p className="p-danger">{errors.healthScore}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="create-div-low">
-          <label>Summary: </label>
           <textarea
-            className={errors.summary && "input-danger"}
+            className={
+              errors.summary
+                ? `${css.inputSummaryDanger}`
+                : `${css.inputSummary}`
+            }
             name="summary"
             value={input.summary}
+            placeholder="Enter summary"
             onChange={handleInput}
-            cols="80"
-            rows="7"
           />
-          {errors.summary && <p className="p-danger">{errors.summary}</p>}
-
-          <label>Instructions: </label>
+          {errors.summary && (
+            <span className={css.pDanger}>{errors.summary}</span>
+          )}
+        </div>
+        <div className={css.containerImage}>
+          <div className={css.divImg}>
+            <img
+              className={css.img}
+              src={input.image !== "" ? input.image : `${NoImage}`}
+            />
+          </div>
+          <input
+            className={css.inputURL}
+            type="url"
+            name="image"
+            value={input.image}
+            onChange={(e) => handleInput(e)}
+            placeholder="Enter the URL of the image"
+          />
+        </div>
+        <div className={css.containerIntruction}>
           <textarea
-            className={errors.instructions && "input-danger"}
+            className={
+              errors.instructions
+                ? `${css.inputIntructionDanger}`
+                : `${css.inputIntruction}`
+            }
             name="instructions"
             value={input.instructions}
             onChange={(e) => handleInput(e)}
-            cols="80"
-            rows="7"
+            placeholder="Enter Intruction"
           />
           {errors.instructions && (
-            <p className="p-danger">{errors.instructions}</p>
+            <span className={css.pDanger}>{errors.instructions}</span>
           )}
-
-          <input type="submit" value="Create" className="btn-create" />
         </div>
       </form>
+
+      <div className={css.containerType}>
+        <h2 className={css.titleType}>DIETS TYPE</h2>
+        <select className={css.selectType} onChange={addDiets}>
+          <option selected>Add diet type</option>
+          {selectDiets()}
+        </select>
+        {input.diets.map((d) => {
+          return (
+            <li className={css.type} key={d}>
+              {d}
+              <span
+                onClick={(e) => deleteDiet(e)}
+                id={d}
+                className={css.deleteType}
+              >
+                x
+              </span>
+            </li>
+          );
+        })}
+      </div>
     </div>
   );
 }

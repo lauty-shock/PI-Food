@@ -128,7 +128,7 @@ export function detailRecipe(id) {
       // Originalmente el las dietas de la receta va a venir como un array de obj
       //aquí hago un mapeo para cambiarlo a un array que solo contenga los tipos de dietas
       recipe.data.diets = recipe.data.diets.map((d) => {
-        return `${d.tipo}, `;
+        return d.tipo;
       });
     }
 

@@ -20,17 +20,14 @@ export default function Detail() {
             <div className={css.data}>
               <h3 className={css.typeTitle}>Dish Types</h3>
               <ul className={css.containerType}>
-                {Array.isArray(details.dishTypes) ? (
+                {details.dishTypes &&
                   details.dishTypes.map((e, i) => {
                     return (
                       <li className={css.type} key={i}>
                         {e}
                       </li>
                     );
-                  })
-                ) : (
-                  <li className={css.type}>{details.dishTypes}</li>
-                )}
+                  })}
               </ul>
             </div>
             <div className={css.data}>
