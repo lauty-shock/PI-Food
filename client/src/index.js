@@ -10,9 +10,6 @@ import store from "./redux/store";
 import "./index.css";
 import axios from "axios";
 
-// import dotenv from "dotenv";
-// dotenv.config();
-
 axios.defaults.baseURL = "pi-food-production-689d.up.railway.app";
 
 ////////////////////////////////////////////////////////
