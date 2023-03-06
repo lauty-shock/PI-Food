@@ -1,6 +1,5 @@
 import axios from "axios";
 
-/////////////////////////////////////////////////////////////////////
 ///////Exporto las los tipos de acciones para errores de typeo///////
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_DIETS = "GET_DIETS";
@@ -28,6 +27,7 @@ export function getAllRecipes() {
         });
       })
       .catch((error) => {
+        console.log('Es acá master!');
         console.log(error);
       });
   };
@@ -147,6 +147,7 @@ export function createRecipe(input) {
     input.image = "http://localhost:3000/static/media/no-image.5da5e856.png";
   }
   return async function (dispatch) {
+    console.log(input)
     try {
       const response = await axios.post(`/recipes`, input); //Pedido a la ruta de creacion le paso el obj input para que lo cree
 
@@ -155,6 +156,7 @@ export function createRecipe(input) {
         payload: response.data, // El payload es el contenido que devuelve la acción
       });
     } catch (error) {
+      // console.log('soltamos un error padre!!!');
       console.log(error);
     }
   };

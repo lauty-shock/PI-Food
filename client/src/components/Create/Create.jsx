@@ -254,7 +254,7 @@ export default function Create() {
       <div className={css.containerType}>
         <h2 className={css.titleType}>DIETS TYPE</h2>
         <select className={css.selectType} onChange={addDiets}>
-          <option selected>Add diet type</option>
+          <option defaultValue="">Add diet type</option>
           {selectDiets()}
         </select>
         {input.diets.map((d) => {
