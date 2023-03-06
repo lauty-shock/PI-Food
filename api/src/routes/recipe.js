@@ -110,7 +110,6 @@ router.post("/", async (req, res) => {
   const { title, image, dishTypes, summary, healthScore, instructions, diets } =
     req.body;
 
-    console.log("Quedamos acá Master!!!");
   try {
     let recipeCreate = await Recipe.create({
       // Creo una nueva receta
@@ -144,7 +143,6 @@ router.post("/", async (req, res) => {
 
     res.json(recipeCreate);
   } catch (error) {
-    console.log('Error en el back compa');
     res.status(400).send(error);
     console.log(error);
   }
