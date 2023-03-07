@@ -10,7 +10,7 @@ import store from "./redux/store";
 import "./index.css";
 import axios from "axios";
 
-axios.defaults.baseURL = "pi-food-production-689d.up.railway.app";
+axios.defaults.baseURL = "https://pi-food-production-689d.up.railway.app";
 
 ////////////////////////////////////////////////////////
 

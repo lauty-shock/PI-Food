@@ -17,7 +17,7 @@ var recipesx = []; //Creo un array vacío que será llenado con todas las receta
 export function getAllRecipes() {
   return function (dispatch) {
     axios
-      .get("pi-food-production-689d.up.railway.app/recipes")
+      .get("/recipes")
       .then((json) => {
         recipesx = json;
 
